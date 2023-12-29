@@ -6,7 +6,7 @@
 /*   By: dmeirele <dmeirele@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/23 09:04:05 by dmeirele          #+#    #+#             */
-/*   Updated: 2023/12/28 15:47:32 by dmeirele         ###   ########.fr       */
+/*   Updated: 2023/12/29 12:52:18 by dmeirele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ int *fill_array(char **argv, int *n_array)
 	int j;
 	int index;
 
+	if (!n_array)
+		return (0);
 	i = 1;
 	index = 0;
 	while (argv[i])
@@ -37,7 +39,7 @@ int *fill_array(char **argv, int *n_array)
 	return (n_array);
 }
 
-int		check_duplicates(int *n_array, int size)
+void		check_duplicates(int *n_array, int size)
 {
 	int i;
 	int	j;
@@ -49,12 +51,15 @@ int		check_duplicates(int *n_array, int size)
 		while (j < size)
 		{
 			if (n_array[i] == n_array[j])
-				return (1);
+			{
+				free(n_array);
+				print_error();
+			}
 			j++;
 		}
 		i++;
 	}
-	return (0);
+	return ;
 }
 
 void		stack_fill(t_stack **stack, int *n_array, int size)

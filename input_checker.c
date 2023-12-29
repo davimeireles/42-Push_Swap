@@ -6,7 +6,7 @@
 /*   By: dmeirele <dmeirele@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 23:16:32 by dmeirele          #+#    #+#             */
-/*   Updated: 2023/12/23 09:04:05 by dmeirele         ###   ########.fr       */
+/*   Updated: 2023/12/29 12:50:22 by dmeirele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,11 +92,11 @@ int	check_input(char **input)
 	return (1);
 }
 
-int	all_checks_for_input(char **input, int *size)
+void	all_checks_for_input(char **input, int *size)
 {
 	if (!(check_input(input)))
-		return (0);
+		print_error();
 	if (!(check_string(input, size)))
-		return (0);
-	return (1);
+		print_error();
+	return ;
 }

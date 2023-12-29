@@ -6,11 +6,32 @@
 /*   By: dmeirele <dmeirele@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/23 09:04:05 by dmeirele          #+#    #+#             */
-/*   Updated: 2023/12/29 03:12:47 by dmeirele         ###   ########.fr       */
+/*   Updated: 2023/12/29 13:04:00 by dmeirele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	free_memory(t_stack *sa, t_stack *sb, int *n_array)
+{
+	t_stack *aux;
+
+	aux = sa;
+	while (aux)
+	{
+		aux = sa->next;
+		free(sa);
+		sa = aux;
+	}
+	aux = sb;
+	while (aux)
+	{
+		aux = sb->next;
+		free(sb);
+		sb = aux;
+	}
+	free(n_array);
+}
 
 void	init_nodes_a(t_stack *sa, t_stack *sb)
 {
@@ -41,16 +62,13 @@ int	main(int argc, char *argv[])
 	int *n_array;
 	int size;
 
-	size = 0;
-	if (argc > 1) {
-		if (!(all_checks_for_input(argv, &size)))
-			print_error();
+	if (argc > 1)
+	{
+		size = 0;
+		all_checks_for_input(argv, &size);
 		n_array = ft_calloc(size,sizeof(int));
-		if (!n_array)
-			return (0);
 		n_array = fill_array(argv, n_array);
-		if (check_duplicates(n_array, size))
-			print_error();
+		check_duplicates(n_array,size);
 		sa = NULL;
 		sb = NULL;
 		stack_fill(&sa,n_array,size);
@@ -58,10 +76,11 @@ int	main(int argc, char *argv[])
 		{
 			if (stack_len(sa) == 2)
 				do_op(&sa,NULL,SA);
-			else if (stack_len(sa) == 3)
+			if (stack_len(sa) == 3)
 				sort_three(&sa);
 			else
 				big_sort(&sa,&sb);
 		}
+		free_memory(sa,sb,n_array);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: dmeirele <dmeirele@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/23 09:12:37 by dmeirele          #+#    #+#             */
-/*   Updated: 2023/12/29 02:31:36 by dmeirele         ###   ########.fr       */
+/*   Updated: 2023/12/29 12:53:05 by dmeirele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,16 +50,17 @@ typedef struct s_stack
 void	print_error(void);
 void	init_nodes_a(t_stack *sa, t_stack *sb);
 void	init_nodes_b(t_stack *sa, t_stack *sb);
+void	free_memory(t_stack *sa, t_stack *sb, int *n_array);
 
 // input checker
 long	ft_atol(char *str);
 int		check_string(char **input, int *size);
 int		check_input(char **input);
-int		all_checks_for_input(char **input, int *size);
+void	all_checks_for_input(char **input, int *size);
 
 // array utils
 int		*fill_array(char **argv, int *n_array);
-int		check_duplicates(int *n_array, int size);
+void	check_duplicates(int *n_array, int size);
 void	stack_fill(t_stack **stack, int *n_array, int size);
 void	append_nodes(t_stack **stack, int number);
 t_stack	*find_last_node(t_stack *stack);
