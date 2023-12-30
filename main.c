@@ -6,7 +6,7 @@
 /*   By: dmeirele <dmeirele@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/23 09:04:05 by dmeirele          #+#    #+#             */
-/*   Updated: 2023/12/29 13:04:00 by dmeirele         ###   ########.fr       */
+/*   Updated: 2023/12/30 00:43:24 by dmeirele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,10 +76,15 @@ int	main(int argc, char *argv[])
 		{
 			if (stack_len(sa) == 2)
 				do_op(&sa,NULL,SA);
-			if (stack_len(sa) == 3)
+			else if (stack_len(sa) == 3)
 				sort_three(&sa);
 			else
 				big_sort(&sa,&sb);
+		}
+		while (sa)
+		{
+			ft_printf("number = %d\n",sa->number);
+			sa = sa->next;
 		}
 		free_memory(sa,sb,n_array);
 	}
