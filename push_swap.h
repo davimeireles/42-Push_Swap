@@ -104,4 +104,7 @@ void	rr(t_stack **sa, t_stack **sb, char *str);
 void	rrr(t_stack **sa, t_stack **sb, char *str);
 
 
+/*void	print_stack(t_stack **stack, char sa_name);*/
+
+
 #endif

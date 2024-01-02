@@ -17,10 +17,10 @@ t_stack *find_min(t_stack *sa)
 	t_stack *min_node;
 	int	min;
 
-	min = INT_MAX;
+	min = sa->number;
 	while (sa)
 	{
-		if (sa->number < min)
+		if (sa->number <= min)
 		{
 			min_node = sa;
 			min = sa->number;

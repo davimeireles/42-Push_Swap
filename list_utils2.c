@@ -12,6 +12,18 @@
 
 # include "push_swap.h"
 
+/*void	print_stack(t_stack **stack, char sa_name)
+{
+	t_stack *head;
+	head = *stack;
+
+	while (head)
+	{
+		ft_printf("stack %c target = %d\n",sa_name,head->target_node->number);
+		head = head->next;
+	}
+}*/
+
 void	big_sort(t_stack **sa, t_stack **sb)
 {
 	int	len_a;

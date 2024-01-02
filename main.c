@@ -81,11 +81,6 @@ int	main(int argc, char *argv[])
 			else
 				big_sort(&sa,&sb);
 		}
-		while (sa)
-		{
-			ft_printf("number = %d\n",sa->number);
-			sa = sa->next;
-		}
 		free_memory(sa,sb,n_array);
 	}
 }
