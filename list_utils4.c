@@ -12,10 +12,10 @@
 
 #include "push_swap.h"
 
-t_stack *find_min(t_stack *sa)
+t_stack	*find_min(t_stack *sa)
 {
-	t_stack *min_node;
-	int	min;
+	t_stack	*min_node;
+	int		min;
 
 	min = sa->number;
 	while (sa)
@@ -32,8 +32,8 @@ t_stack *find_min(t_stack *sa)
 
 void	set_target_b(t_stack *sa, t_stack *sb)
 {
-	t_stack *current_a;
-	t_stack *target_node;
+	t_stack	*current_a;
+	t_stack	*target_node;
 	long	best_index;
 
 	while (sb)
@@ -43,7 +43,7 @@ void	set_target_b(t_stack *sa, t_stack *sb)
 		while (current_a)
 		{
 			if (current_a->number > sb->number
-			&& current_a->number < best_index)
+				&& current_a->number < best_index)
 			{
 				best_index = current_a->number;
 				target_node = current_a;
@@ -61,7 +61,7 @@ void	set_target_b(t_stack *sa, t_stack *sb)
 void	move_b_to_a(t_stack **sa, t_stack **sb)
 {
 	prep_for_push(sa, (*sb)->target_node, 'a');
-	do_op(sb,sa,PA);
+	do_op(sb, sa, PA);
 }
 
 void	min_on_top(t_stack **sa)
@@ -69,8 +69,8 @@ void	min_on_top(t_stack **sa)
 	while ((*sa)->number != find_min(*sa)->number)
 	{
 		if (find_min(*sa)->above_median)
-			do_op(sa,NULL,RA);
+			do_op(sa, NULL, RA);
 		else
-			do_op(sa,NULL,RRA);
+			do_op(sa, NULL, RRA);
 	}
 }

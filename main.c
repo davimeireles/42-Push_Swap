@@ -6,7 +6,7 @@
 /*   By: dmeirele <dmeirele@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/23 09:04:05 by dmeirele          #+#    #+#             */
-/*   Updated: 2023/12/30 00:43:24 by dmeirele         ###   ########.fr       */
+/*   Updated: 2024/01/03 16:26:14 by dmeirele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	free_memory(t_stack *sa, t_stack *sb, int *n_array)
 {
-	t_stack *aux;
+	t_stack	*aux;
 
 	aux = sa;
 	while (aux)
@@ -37,8 +37,8 @@ void	init_nodes_a(t_stack *sa, t_stack *sb)
 {
 	current_index(sa);
 	current_index(sb);
-	set_target_a(sa,sb);
-	check_cost_a(sa,sb);
+	set_target_a(sa, sb);
+	check_cost_a(sa, sb);
 	set_cheapest(sa);
 }
 
@@ -51,36 +51,34 @@ void	init_nodes_b(t_stack *sa, t_stack *sb)
 
 void	print_error(void)
 {
-	ft_putendl_fd("Error",2);
+	ft_putendl_fd("Error", 2);
 	exit(1);
 }
 
 int	main(int argc, char *argv[])
 {
-	t_stack *sa;
-	t_stack *sb;
-	int *n_array;
-	int size;
+	t_stack	*sa;
+	t_stack	*sb;
+	int		*n_array;
+	int		size;
 
 	if (argc > 1)
 	{
 		size = 0;
 		all_checks_for_input(argv, &size);
-		n_array = ft_calloc(size,sizeof(int));
+		n_array = ft_calloc(size, sizeof(int));
 		n_array = fill_array(argv, n_array);
-		check_duplicates(n_array,size);
+		check_duplicates(n_array, size);
 		sa = NULL;
 		sb = NULL;
-		stack_fill(&sa,n_array,size);
+		stack_fill(&sa, n_array, size);
 		if (!is_sorted(sa))
 		{
-			if (stack_len(sa) == 2)
-				do_op(&sa,NULL,SA);
-			else if (stack_len(sa) == 3)
+			if (stack_len(sa) <= 3)
 				sort_three(&sa);
 			else
-				big_sort(&sa,&sb);
+				big_sort(&sa, &sb);
 		}
-		free_memory(sa,sb,n_array);
+		free_memory(sa, sb, n_array);
 	}
 }

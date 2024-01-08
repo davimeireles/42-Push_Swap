@@ -5,18 +5,18 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmeirele <dmeirele@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/23 09:04:05 by dmeirele          #+#    #+#             */
-/*   Updated: 2023/12/29 12:52:18 by dmeirele         ###   ########.fr       */
+/*   Created: 2024/01/03 16:15:14 by dmeirele          #+#    #+#             */
+/*   Updated: 2024/01/03 16:15:17 by dmeirele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int *fill_array(char **argv, int *n_array)
+int	*fill_array(char **argv, int *n_array)
 {
-	int i;
-	int j;
-	int index;
+	int	i;
+	int	j;
+	int	index;
 
 	if (!n_array)
 		return (0);
@@ -27,7 +27,8 @@ int *fill_array(char **argv, int *n_array)
 		j = 0;
 		while (argv[i][j])
 		{
-			while (argv[i][j] == ' ' || argv[i][j] == '\t' || argv[i][j] == '\n')
+			while (argv[i][j] == ' ' || argv[i][j] == '\t' 
+			|| argv[i][j] == '\n')
 				j++;
 			if (argv[i][j])
 				n_array[index++] = ft_atoi(&argv[i][j]);
@@ -39,9 +40,9 @@ int *fill_array(char **argv, int *n_array)
 	return (n_array);
 }
 
-void		check_duplicates(int *n_array, int size)
+void	check_duplicates(int *n_array, int size)
 {
-	int i;
+	int	i;
 	int	j;
 
 	i = 0;
@@ -62,12 +63,13 @@ void		check_duplicates(int *n_array, int size)
 	return ;
 }
 
-void		stack_fill(t_stack **stack, int *n_array, int size)
+void	stack_fill(t_stack **stack, int *n_array, int size)
 {
-	int i;
+	int	i;
 
 	i = 0;
-	while (i < size) {
+	while (i < size)
+	{
 		append_nodes(stack, n_array[i]);
 		i++;
 	}
@@ -75,8 +77,8 @@ void		stack_fill(t_stack **stack, int *n_array, int size)
 
 void	append_nodes(t_stack **stack, int number)
 {
-	t_stack *node;
-	t_stack *last_node;
+	t_stack	*node;
+	t_stack	*last_node;
 
 	if (!stack)
 		return ;

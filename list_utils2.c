@@ -6,23 +6,11 @@
 /*   By: dmeirele <dmeirele@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/23 09:04:05 by dmeirele          #+#    #+#             */
-/*   Updated: 2023/12/29 21:54:41 by dmeirele         ###   ########.fr       */
+/*   Updated: 2024/01/03 16:20:51 by dmeirele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "push_swap.h"
-
-/*void	print_stack(t_stack **stack, char sa_name)
-{
-	t_stack *head;
-	head = *stack;
-
-	while (head)
-	{
-		ft_printf("stack %c target = %d\n",sa_name,head->target_node->number);
-		head = head->next;
-	}
-}*/
+#include "push_swap.h"
 
 void	big_sort(t_stack **sa, t_stack **sb)
 {
@@ -30,9 +18,9 @@ void	big_sort(t_stack **sa, t_stack **sb)
 
 	len_a = stack_len(*sa);
 	if (len_a-- > 3 && !is_sorted(*sa))
-		do_op(sa,sb,PB);
+		do_op(sa, sb, PB);
 	if (len_a-- > 3 && !is_sorted(*sa))
-		do_op(sa,sb,PB);
+		do_op(sa, sb, PB);
 	while (len_a-- > 3 && !is_sorted(*sa))
 	{
 		init_nodes_a(*sa, *sb);
@@ -71,18 +59,18 @@ void	current_index(t_stack *stack)
 
 void	set_target_a(t_stack *sa, t_stack *sb)
 {
-	t_stack *current_b;
-	t_stack *target_node;
+	t_stack	*current_b;
+	t_stack	*target_node;
 	long	best_index;
 
-	while(sa)
+	while (sa)
 	{
 		best_index = LONG_MIN;
 		current_b = sb;
 		while (current_b)
 		{
 			if (current_b->number < sa->number
-			&& current_b->number > best_index)
+				&& current_b->number > best_index)
 			{
 				best_index = current_b->number;
 				target_node = current_b;
@@ -125,7 +113,7 @@ void	set_cheapest(t_stack *stack)
 	if (!stack)
 		return ;
 	cheapest_value = LONG_MAX;
-	while(stack)
+	while (stack)
 	{
 		if (stack->push_cost < cheapest_value)
 		{

@@ -5,45 +5,43 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: dmeirele <dmeirele@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/23 09:04:05 by dmeirele          #+#    #+#             */
-/*   Updated: 2023/12/29 03:09:46 by dmeirele         ###   ########.fr       */
+/*   Created: 2024/01/03 16:17:16 by dmeirele          #+#    #+#             */
+/*   Updated: 2024/01/03 16:18:10 by dmeirele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "push_swap.h"
+#include "push_swap.h"
 
 void	do_op(t_stack **stack1, t_stack **stack2, t_operation op)
 {
 	if (op == SA)
-		return sx(stack1, "sa");
+		return (sx(stack1, "sa"));
 	else if (op == SB)
-		return sx(stack1, "sb");
-	else if (op == SS)
-		return ;
+		return (sx(stack1, "sb"));
 	else if (op == PA)
-		return px(stack1,stack2,"pa");
+		return (px(stack1, stack2, "pa"));
 	else if (op == PB)
-		return px(stack1,stack2,"pb");
+		return (px(stack1, stack2, "pb"));
 	else if (op == RA)
-		return rx(stack1, "ra");
+		return (rx(stack1, "ra"));
 	else if (op == RB)
-		return rx(stack1, "rb");
+		return (rx(stack1, "rb"));
 	else if (op == RR)
-		return rr(stack1, stack2, "rr");
+		return (rr(stack1, stack2, "rr"));
 	else if (op == RRA)
-		return rrx(stack1, "rra");
+		return (rrx(stack1, "rra"));
 	else if (op == RRB)
-		return rrx(stack1, "rrb");
+		return (rrx(stack1, "rrb"));
 	else if (op == RRR)
-		return rrr(stack1,stack2,"rrr");
+		return (rrr(stack1, stack2, "rrr"));
 }
 
 void	rrx(t_stack **stack, char *str)
 {
 	t_stack	*helper;
 	t_stack	*last;
-	int	size;
-	int	i;
+	int		size;
+	int		i;
 
 	last = find_last_node(*stack);
 	helper = *stack;
@@ -60,24 +58,24 @@ void	rrx(t_stack **stack, char *str)
 	last->next = *stack;
 	*stack = last;
 	if (str)
-		ft_putendl_fd(str,1);
+		ft_putendl_fd(str, 1);
 }
 
 void	sx(t_stack **stack, char *str)
 {
-	t_stack *aux;
+	t_stack	*aux;
 
 	aux = (*stack)->next;
 	(*stack)->next = aux->next;
 	aux->next = (*stack);
 	(*stack) = aux;
 	if (str)
-		ft_putendl_fd(str,1);
+		ft_putendl_fd(str, 1);
 }
 
 void	rx(t_stack **stack, char *str)
 {
-	t_stack *helper;
+	t_stack	*helper;
 	t_stack	*last_node;
 	t_stack	*sec;
 
@@ -89,7 +87,7 @@ void	rx(t_stack **stack, char *str)
 	last_node->next = helper;
 	helper->next = NULL;
 	if (str)
-		ft_putendl_fd(str,1);
+		ft_putendl_fd(str, 1);
 }
 
 void	px(t_stack **src, t_stack **dest, char *str)
@@ -107,4 +105,3 @@ void	px(t_stack **src, t_stack **dest, char *str)
 	if (str)
 		ft_putendl_fd(str, 1);
 }
-

@@ -6,12 +6,12 @@
 /*   By: dmeirele <dmeirele@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/23 09:12:37 by dmeirele          #+#    #+#             */
-/*   Updated: 2023/12/29 12:53:05 by dmeirele         ###   ########.fr       */
+/*   Updated: 2024/01/03 16:27:41 by dmeirele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
-#define PUSH_SWAP_H
+# define PUSH_SWAP_H
 
 # include <stdlib.h>
 # include "libft/libft.h"
@@ -22,7 +22,6 @@ typedef enum operations
 {
 	SA,
 	SB,
-	SS,
 	PA,
 	PB,
 	RA,
@@ -45,7 +44,6 @@ typedef struct s_stack
 	struct s_stack	*prev;
 }	t_stack;
 
-
 // main
 void	print_error(void);
 void	init_nodes_a(t_stack *sa, t_stack *sb);
@@ -66,11 +64,11 @@ void	append_nodes(t_stack **stack, int number);
 t_stack	*find_last_node(t_stack *stack);
 
 // list utils
-bool		is_sorted(t_stack *stack);
-int			stack_len(t_stack *stack);
-void		sort_three(t_stack **stack);
-void		shift_stack(t_stack *popped);
-t_stack		*find_biggest_node(t_stack *stack);
+bool	is_sorted(t_stack *stack);
+int		stack_len(t_stack *stack);
+void	sort_three(t_stack **stack);
+void	shift_stack(t_stack *popped);
+t_stack	*find_biggest_node(t_stack *stack);
 
 // list utils 2
 void	current_index(t_stack *stack);
@@ -87,7 +85,7 @@ void	prep_for_push(t_stack **stack, t_stack *node, char s_name);
 void	move_a_to_b(t_stack **sa, t_stack **sb);
 
 // list utils 4
-t_stack *find_min(t_stack *sa);
+t_stack	*find_min(t_stack *sa);
 void	set_target_b(t_stack *sa, t_stack *sb);
 void	move_b_to_a(t_stack **sa, t_stack **sb);
 void	min_on_top(t_stack **sa);
@@ -102,9 +100,5 @@ void	px(t_stack **src, t_stack **dest, char *str);
 // commands 2
 void	rr(t_stack **sa, t_stack **sb, char *str);
 void	rrr(t_stack **sa, t_stack **sb, char *str);
-
-
-/*void	print_stack(t_stack **stack, char sa_name);*/
-
 
 #endif

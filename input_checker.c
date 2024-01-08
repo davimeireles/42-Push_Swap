@@ -6,7 +6,7 @@
 /*   By: dmeirele <dmeirele@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 23:16:32 by dmeirele          #+#    #+#             */
-/*   Updated: 2023/12/29 12:50:22 by dmeirele         ###   ########.fr       */
+/*   Updated: 2024/01/03 16:18:39 by dmeirele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,9 +66,9 @@ int	check_string(char **input, int *size)
 
 int	check_input(char **input)
 {
-	int	i;
-	int	j;
-	int	flag_number;
+	int		i;
+	int		j;
+	bool	flag_number;
 
 	i = 1;
 	flag_number = 0;
@@ -79,10 +79,11 @@ int	check_input(char **input)
 		{
 			if (input[i][j] == '-' && !(ft_isdigit(input[i][j + 1])))
 				return (0);
-			if (input[i][j] != ' ' && input[i][j] != '\t' && !(ft_isdigit(input[i][j])) && input[i][j] != '-' )
+			if (input[i][j] != ' ' && input[i][j] != '\t' 
+			&& !(ft_isdigit(input[i][j])) && input[i][j] != '-' )
 				return (0);
 			if (ft_isdigit(input[i][j]))
-				flag_number = 1;
+				flag_number = true;
 			j++;
 		}
 		i++;
